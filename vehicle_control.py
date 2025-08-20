@@ -30,7 +30,7 @@ class VehicleController(Node):
         self.timer = self.create_timer(0.1, self.timer_callback)  # 10 Hz
 
         self.max_speed = 27.78  # 100 km/h in m/s
-        self.acceleration_command = 1.0  # m/s^2 acceleration command (adjust as needed)
+        self.acceleration_command = 1.5  # m/s^2 acceleration command (adjust as needed)
         self.state = 'accelerating'
         self.current_speed = 0.0
         self.current_position = (0.0, 0.0, 0.0)
