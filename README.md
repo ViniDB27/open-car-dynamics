@@ -75,7 +75,7 @@ Clone the repository into your Open Car Dynamics workspace:
 ### Plotting Simulation Signals
 
 ```bash
-python log_vehicle_model_signals.py
+python3 log_vehicle_model_signals.py
 ```
 
 Launches a visual interface for loading simulation logs and plotting key vehicle dynamics signals.
@@ -83,7 +83,7 @@ Launches a visual interface for loading simulation logs and plotting key vehicle
 ### Running the Example Vehicle Controller
 
 ```bash
-python vehicle_control.py
+python3 vehicle_control.py
 ```
 
 Demonstrates how to implement and test a custom vehicle controller in the simulator.
