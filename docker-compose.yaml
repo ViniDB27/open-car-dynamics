@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  vehicle_model_double_track_cpp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vehicle_model_double_track_cpp
+    network_mode: host
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ./vehicle_control.py:/dev_ws/vehicle_control.py
+      - ./log_vehicle_model_signals.py:/dev_ws/log_vehicle_model_signals.py
+      - ./config:/dev_ws/config
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    entrypoint: ["/ros_entrypoint.sh"]
+    command: >
+      bash -c "source /dev_ws/install/setup.bash &&
+               ros2 run vehicle_model_nodes vehicle_model_double_track_cpp_node
+               --ros-args --params-file /dev_ws/config/example_config.yml"
+
+    tty: true
+    init: true
+    restart: unless-stopped
