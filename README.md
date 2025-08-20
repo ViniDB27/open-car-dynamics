@@ -17,76 +17,56 @@ Currently, it includes:
 
 * **Open Car Dynamics** installed and configured
 * Python 3.8+
-
+* Docker installed
 
 
 ## Installation
 
-Clone this repository into your Open Car Dynamics workspace:
+Clone this repository:
 
 ### 1. Clone the Open Car Dynamics Repository
 Clone the repository into your Open Car Dynamics workspace:
 
-```bash
-git clone https://github.com/TUMFTM/Open-Car-Dynamics.git
-```
-
-### 2. Clone the auxiliary code
-
-```bash
-git clone https://gitlab.lisha.ufsc.br/josafat/auxiliary-codes-for-simulation-in-open-car-dynamics.git
-cd auxiliary-codes-for-simulation-in-open-car-dynamics
-```
-
-### 3. Copy the auxliary files to the Open Car dynamics folder.
+### 2. Copy the auxliary files to the Open Car dynamics folder.
 
 ## Setup Instructions
 
-1. **Copy auxiliary files**
-   Copy all auxiliary files into the **Open Car Dynamics** folder.
-   ```bash
-   cp Dockerfile vehicle_control.py run_in_container.sh log_vehicle_model_signals.py ../Open-Car-Dynamics/
-   ```
-
-2. **Build the container**
+1. **Build the container**
 
    ```bash
    sudo bash build_container.sh
    ```
 
-3. **Run the container**
+2. **Run the container**
 
    ```bash
    sudo bash run_in_container.sh
    ```
 
-4. **Start the vehicle model visualization**
+3. **Start the vehicle model visualization**
    In a **separate terminal**, run:
 
    ```bash
    docker exec -it -e DISPLAY=$DISPLAY vehicle_model_double_track_cpp bash
+   ```
+   ```bash
    source /dev_ws/install/setup.bash
+   ```
+   ```bash
    python3 log_vehicle_model_signals.py
    ```
-
-   This opens the visual interface for loading and plotting vehicle dynamics simulation logs.
-
-5. **Run the vehicle controller**
-   In another **separate terminal**, run:
-
-   ```bash
-   docker exec -it -e DISPLAY=$DISPLAY vehicle_model_double_track_cpp bash
-   source /dev_ws/install/setup.bash
-   python3 vehicle_control.py
+    This opens the visual interface for loading and plotting vehicle dynamics simulation logs.
+   
+    ```bash
+    python3 vehicle_control.py
    ```
+    This starts the control commands for the vehicle in the simulator.
 
-   This starts the control commands for the vehicle in the simulator.
-6. **Stop the container**
+4. **Stop the container**
 
    ```bash
    sudo bash stop_container.sh
    ```
-
 
 ---
 
