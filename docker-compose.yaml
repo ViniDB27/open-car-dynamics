@@ -16,6 +16,7 @@ services:
       - ./log_vehicle_model_signals.py:/dev_ws/log_vehicle_model_signals.py
       - ./config:/dev_ws/config
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./logs:/dev_ws/logs
     entrypoint: ["/ros_entrypoint.sh"]
     command: >
       bash -c "source /dev_ws/install/setup.bash &&
